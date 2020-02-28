@@ -92,6 +92,7 @@ function getRandomQuote()
 
 /***
  * `printQuote` function
+ * randomQuote is a local variable, declared for retriving 
  * it prints exactly as per the sample quote
  * if condition for the print function for the quotes with author & year and quotes without author and year 
 ***/
