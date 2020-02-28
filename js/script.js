@@ -7,17 +7,14 @@ project 1 - A Random Quote Generator
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
   
-  //variables declared.
 
-var text ;
-var text1;
-let randomObj = {};
+
 
 
 
 /*** 
  * `quotes` array 
- * -- 10 quotes with year and citation
+ * -- 10 quotes ,most with year and citation and some without year and citation
 ***/
 let quotes = [
   { 
@@ -30,20 +27,17 @@ let quotes = [
   { 
     quote: "The best way to get a project done faster is to start sooner",
     author: "Jim Highsmith",
-    year: 2005,
-    citation: "Chip Magazine",
+    
   },
   { 
     quote: "Program testing can be used to show the presence of bugs, but never to show their absence!",
     author: "Edsger Dijkstra",
-    year: 2001,
-    citation: "Informatics guide",
+    
   },
   { 
     quote: "Correctness is clearly the prime quality. If a system does not do what it is supposed to do, then everything else about it matters little.",
     author: "Bertrand Meyer",
-    year: 2006,
-    citation: "Tech convention Delhi",
+    
   },
   { 
     quote: "Conceptual integrity is the most important consideration in system design.",
@@ -60,14 +54,12 @@ let quotes = [
   { 
     quote: "A good way to stay flexible is to write less code.",
     author: "John Ousterhout",
-    year: 2010,
-    citation: "Silicon India",
+    
   },
   { 
     quote: "Simplicity is prerequisite for reliability",
     author: "Edsger W.Dijkstra",
-    year: 2012,
-    citation: "Wired Magazine",
+    
   },
   { 
     quote: "Optimism is an occupational hazard of programming: feedback is the treatment.",
@@ -87,40 +79,38 @@ let quotes = [
 
 /***
  * `getRandomQuote` function
- * function returns a random object which is stored in randomOBJ variable
+ * function returns a random object with the index number of randomnumber variable
 ***/
 
 function getRandomQuote()
 {
-  var randomnumber = Math.floor(Math.random() * quotes.length) + 1;
-   for (var i = 0; i <=quotes.length; i+=1)
-  { 
+  var randomnumber = Math.floor(Math.random() * quotes.length);
   
-    if (i === randomnumber)
-  {
-  
-  randomObj = quotes[i];
-  
-  }
-    
-  }
-  return randomObj;
+  return quotes[randomnumber];
 }
 
 
 /***
  * `printQuote` function
  * it prints exactly as per the sample quote
+ * if condition for the print function for the quotes with author & year and quotes without author and year 
 ***/
 function printQuote()
 { 
-   getRandomQuote();
-   document.getElementsByClassName("quote")[0].innerHTML = randomObj.quote;
-   document.getElementsByClassName("source")[0].innerHTML = randomObj.author + ", " + "<i>" + randomObj.citation + "</i>, " + randomObj.year;
-   
+  var randomQuote = getRandomQuote();
+  if (randomQuote.year == undefined && randomQuote.citation == undefined)
+  {
+    document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
+    document.getElementsByClassName("source")[0].innerHTML = randomQuote.author; 
+    
+  } else {
+   document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
+   document.getElementsByClassName("source")[0].innerHTML = randomQuote.author + ", " + "<i>" + randomQuote.citation + "</i>, " + randomQuote.year;
+  }
 
   
-console.log(randomObj);
+console.log(randomQuote);
+
 }
 
 
