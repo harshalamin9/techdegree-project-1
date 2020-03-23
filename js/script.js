@@ -95,22 +95,30 @@ function getRandomQuote()
  * randomQuote is a local variable, declared for retriving 
  * it prints exactly as per the sample quote
  * if condition for the print function for the quotes with author & year and quotes without author and year 
+ * 'html' is a local variable to store a string
 ***/
 function printQuote()
 { 
   var randomQuote = getRandomQuote();
+  var html = "";
   if (randomQuote.year == undefined && randomQuote.citation == undefined)
   {
-    document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
-    document.getElementsByClassName("source")[0].innerHTML = randomQuote.author; 
+    html += '<p class="quote">' + randomQuote.quote + "</p>" + '<p class="source">' + randomQuote.author + "</p>";
+    
+    //document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
+    //document.getElementsByClassName("source")[0].innerHTML = randomQuote.author; 
+    document.getElementById("quote-box").innerHTML = html;
     
   } else {
-   document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
-   document.getElementsByClassName("source")[0].innerHTML = randomQuote.author + ", " + "<i>" + randomQuote.citation + "</i>, " + randomQuote.year;
+    html += '<p class="quote">' + randomQuote.quote + "</p>" + '<p class="source">' + randomQuote.author + ", " + "<i>" + randomQuote.citation + "</i>, " + randomQuote.year + "</p>";
+   
+    //document.getElementsByClassName("quote")[0].innerHTML = randomQuote.quote;
+   //document.getElementsByClassName("source")[0].innerHTML = randomQuote.author + ", " + "<i>" + randomQuote.citation + "</i>, " + randomQuote.year;
+   document.getElementById("quote-box").innerHTML = html;
   }
 
   
-console.log(randomQuote);
+console.log(html);
 
 }
 
